@@ -11,8 +11,21 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would implement the SMS sending functionality
-    console.log('Form submitted:', formData);
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = 
+      `New Contact Form Submission:\n\n` +
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Message: ${formData.message}`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Open WhatsApp with the pre-filled message
+    window.open(`https://wa.me/919096457620?text=${encodedMessage}`, '_blank');
+    
     // Reset form
     setFormData({
       name: '',
@@ -109,7 +122,7 @@ export default function Contact() {
                 className="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <Send className="h-4 w-4 mr-2" />
-                Send Message
+                Send via WhatsApp
               </button>
             </form>
           </div>
@@ -122,39 +135,38 @@ export default function Contact() {
                 <div className="flex items-center">
                   <Phone className="h-6 w-6 text-indigo-600 mr-4" />
                   <div>
-                    <p className="text-sm font-medium text-gray-500">Phone</p>
-                    <p className="text-lg">+1 (909) 645-7620</p>
+                    <p className="text-sm font-medium text-gray-500">Phone/WhatsApp</p>
+                    <p className="text-lg">+91 9096457620</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-indigo-600 mr-4" />
                   <div>
                     <p className="text-sm font-medium text-gray-500">Email</p>
-                    <p className="text-lg">contact@colorshop.com</p>
+                    <p className="text-lg">nikampratik2989@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-6 w-6 text-indigo-600 mr-4" />
                   <div>
                     <p className="text-sm font-medium text-gray-500">Address</p>
-                    <p className="text-lg">123 Paint Street, Color City, ST 12345</p>
+                    <p className="text-lg">Yakatpur Road, Divya Color Home Near Medical</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Google Maps Embed */}
-            <div className="bg-white rounded-lg shadow-md p-8 h-[300px]">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden h-[300px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.98!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM40zMCcwMC4wIk4gNzPCsDU4JzQ4LjAiVw!5e0!3m2!1sen!2sus!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.731509292737!2d76.5108643!3d18.2440751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf7e610000000b%3A0x5c512e82df4b872f!2sYakatpur%20Road%2C%20Namrata%20KSK%20AUSA!5e0!3m2!1sen!2sin!4v1715941234567!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps"
-                className="rounded-lg"
+                title="Google Maps - Yakatpur Road Location"
               />
             </div>
           </div>
